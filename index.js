@@ -1,29 +1,28 @@
 let myMap = {
     location: [],
     businesses: [],
-    markers: [],
-    map: [],
+    markers: {},
+    map: {},
 
     buildMap () {
-        let map = L.map('map').setView(this.location, 13);
+        this.map = L.map('map').setView(this.location, 13);
         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,
             attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-        }).addTo(map);
+        }).addTo(this.map);
 
         let marker = L.marker(this.location);
-        marker.addTo(map).bindPopup(`<p>You are here</p>`).openPopup();
+        marker.addTo(this.map).bindPopup(`<p>You are here</p>`).openPopup();
     },
 
     addMarkers() {
 		for (let i = 0; i < this.businesses.length; i++) {
-		this.markers = L.marker([
-			this.businesses[i].lat,
-			this.businesses[i].long,
-		])
-        .addTo(map)
-        .bindPopup(`<p1>${this.businesses[i].name}</p1>`)
-        .openPopup()
+            this.markers = L.marker([
+                this.businesses[i].lat,
+                this.businesses[i].long,
+            ])
+            .bindPopup(`<p1>${this.businesses[i].name}</p1>`)
+            .addTo(this.map)
 		}
 	},
 }
