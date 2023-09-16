@@ -1,0 +1,16 @@
+body {
+    background-color: #74a29f;
+    color: #653b46;
+    text-align: center;
+}
+
+#businesses {
+    background-color: #354b49;
+    color: white;
+}
+
+#map {
+    height: 800px;
+    width: 80%;
+    margin: 0 auto;
+}
